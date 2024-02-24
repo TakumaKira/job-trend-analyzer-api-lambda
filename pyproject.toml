@@ -9,6 +9,17 @@ readme = "README.md"
 python = "^3.10"
 
 
+[tool.poetry.group.dev.dependencies]
+pytest = "^8.0.1"
+
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
+
+[tool.pytest.ini_options]
+addopts = [
+    "--import-mode=importlib",
+]
+pythonpath = [
+  "src/app"
+]
