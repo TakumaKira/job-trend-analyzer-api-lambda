@@ -1,0 +1,5 @@
+.venv
+__pycache__/
+
+command_memo.txt
+api_gateway_event_sample.py
