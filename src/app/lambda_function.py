@@ -1,12 +1,12 @@
 import json
-from repository import get_results
+import repository
 
 
 def lambda_handler(event, context):
     if event.get('path') == '/data':
         return {
             'statusCode': 200,
-            'body': json.dumps(get_results())
+            'body': json.dumps(repository.get_results())
         }
 
     return {

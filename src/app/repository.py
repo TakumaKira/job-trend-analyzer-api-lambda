@@ -1,4 +1,4 @@
-from db import operations
+import db.operations as operations
 
 
 def get_results():

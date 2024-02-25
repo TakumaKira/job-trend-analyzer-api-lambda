@@ -1,8 +1,8 @@
-from . import get_connector
+import db
 
 
 def get_results():
-    conn = get_connector()
+    conn = db.get_connector()
     cur = conn.cursor()
     cur.execute("SELECT id, url, job_title, job_location, scrape_date, count FROM results")
     return [{
