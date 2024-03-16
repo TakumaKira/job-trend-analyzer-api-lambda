@@ -8,7 +8,7 @@ def lambda_handler(event, context):
             'statusCode': 200,
             'headers': {
                 # TODO: Control properly
-                'Access-Control-Allow-Origin': '*',
+                'Access-Control-Allow-Origin': 'http://localhost:3000',
             },
             'body': json.dumps(repository.get_results())
         }
