@@ -42,12 +42,12 @@ class MockConn:
 class TestOperations:
     def test_get_results(self):
         mock_db_results = [
-            (1, 'url_1', 'job_title_1', 'job_location_1', datetime.datetime(2001, 1, 1, 1, 1, 1), 1),
-            (2, 'url_2', 'job_title_2', 'job_location_2', datetime.datetime(2002, 2, 2, 2, 2, 2), 2)
+            ('url_1', 'job_title_1', 'job_location_1', datetime.datetime(2001, 1, 1, 1, 1, 1), 1),
+            ('url_2', 'job_title_2', 'job_location_2', datetime.datetime(2002, 2, 2, 2, 2, 2), 2)
         ]
         mock_results = [
-            {'id': 1, 'url': 'url_1', 'job_title': 'job_title_1', 'job_location': 'job_location_1', 'scrape_date': '2001-01-01 01:01:01', 'count': 1},
-            {'id': 2, 'url': 'url_2', 'job_title': 'job_title_2', 'job_location': 'job_location_2', 'scrape_date': '2002-02-02 02:02:02', 'count': 2}
+            {'url': 'url_1', 'job_title': 'job_title_1', 'job_location': 'job_location_1', 'scrape_date': '2001-01-01 01:01:01', 'count': 1},
+            {'url': 'url_2', 'job_title': 'job_title_2', 'job_location': 'job_location_2', 'scrape_date': '2002-02-02 02:02:02', 'count': 2}
         ]
         mock_fetchall.return_value = mock_db_results
         mock_conn = MockConn()

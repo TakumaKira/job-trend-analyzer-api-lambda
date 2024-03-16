@@ -29,10 +29,9 @@ def get_results():
     """
     cur.execute(query)
     return [{
-        'id': row[0],
-        'url': row[1],
-        'job_title': row[2],
-        'job_location': row[3],
-        'scrape_date': row[4].strftime("%Y-%m-%d %H:%M:%S"),
-        'count': row[5]
+        'url': row[0],
+        'job_title': row[1],
+        'job_location': row[2],
+        'scrape_date': row[3].strftime("%Y-%m-%d %H:%M:%S"),
+        'count': row[4]
     } for row in cur.fetchall()]
