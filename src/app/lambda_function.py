@@ -6,6 +6,10 @@ def lambda_handler(event, context):
     if event.get('path') == '/data':
         return {
             'statusCode': 200,
+            'headers': {
+                # TODO: Control properly
+                'Access-Control-Allow-Origin': '*',
+            },
             'body': json.dumps(repository.get_results())
         }
 
