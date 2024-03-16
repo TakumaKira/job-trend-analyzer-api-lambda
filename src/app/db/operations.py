@@ -4,7 +4,30 @@ import db
 def get_results():
     conn = db.get_connector()
     cur = conn.cursor()
-    cur.execute("SELECT id, url, job_title, job_location, scrape_date, count FROM results")
+    query = """
+        SELECT
+            url,
+            job_title,
+            job_location,
+            scrape_date,
+            count
+        FROM
+            (
+                SELECT
+                    url,
+                    job_title,
+                    job_location,
+                    scrape_date,
+                    count,
+                    ROW_NUMBER() OVER (PARTITION BY url ORDER BY scrape_date) AS row_num
+                FROM
+                    results
+            ) AS ranked_results
+        ORDER BY
+            url,
+            row_num;
+    """
+    cur.execute(query)
     return [{
         'id': row[0],
         'url': row[1],

@@ -1,5 +1,6 @@
 import json
 import repository
+import transformers
 
 
 def lambda_handler(event, context):
@@ -10,7 +11,7 @@ def lambda_handler(event, context):
                 # TODO: Control properly
                 'Access-Control-Allow-Origin': 'http://localhost:3000',
             },
-            'body': json.dumps(repository.get_results())
+            'body': json.dumps(transformers.bundle(repository.get_results(), 'url', ['job_title', 'job_location', 'scrape_date', 'count']))
         }
 
     return {
