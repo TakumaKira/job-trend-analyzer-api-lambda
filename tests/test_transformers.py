@@ -18,4 +18,19 @@ class TestTransformers:
                 {'job_title': 'Product Manager', 'job_location': 'Seattle', 'scrape_date': '2024-03-14', 'count': 3}
             ]
         }
+        expected_result = [
+            {
+                'url': 'example.com',
+                'results': [
+                    {'job_title': 'Software Engineer', 'job_location': 'New York', 'scrape_date': '2024-03-15', 'count': 1},
+                    {'job_title': 'Data Scientist', 'job_location': 'San Francisco', 'scrape_date': '2024-03-16', 'count': 2}
+                ]
+            },
+            {
+                'url': 'anotherexample.com',
+                'results': [
+                    {'job_title': 'Product Manager', 'job_location': 'Seattle', 'scrape_date': '2024-03-14', 'count': 3}
+                ]
+            }
+        ]
         assert bundled_records == expected_result
