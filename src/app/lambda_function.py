@@ -8,16 +8,9 @@ def lambda_handler(event, context):
     try:
         if event.get('path') == '/data':
             allowed_origins = [os.environ['FRONTEND_ORIGIN_PROD'], os.environ['FRONTEND_ORIGIN_DEV']]
-
-            print(event)
-            if event:
-                print(event.get('headers'))
-            if event.get('headers'):
-                print(event.get('headers').get('Origin'))
-
-            if 'headers' in event and 'Origin' in event['headers']:
-                origin = event['headers']['Origin']
-            print(origin)
+            origin = None
+            if 'headers' in event and 'origin' in event['headers']:
+                origin = event['headers']['origin']
             if origin == None or origin not in allowed_origins:
                 response = {
                     "statusCode": 400,
