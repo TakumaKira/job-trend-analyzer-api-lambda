@@ -4,6 +4,7 @@ import db
 def get_results():
     conn = db.get_connector()
     cur = conn.cursor()
+    # When updating the query, make sure to update `mock_db_results` in tests/test_db.py accordingly
     query = """
         SELECT
             url,
