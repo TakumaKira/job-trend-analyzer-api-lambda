@@ -7,11 +7,13 @@ import transformers
 def lambda_handler(event, context):
     try:
         if event.get('path') == '/data':
-            allowed_origins = [os.environ['FRONTEND_ORIGIN_PROD'], os.environ['FRONTEND_ORIGIN_DEV']]
+            allowed_origins = os.environ.get('ALLOWED_FRONTEND_ORIGINS', '').split(',')
+            if 'None' in allowed_origins:
+                allowed_origins[allowed_origins.index('None')] = None
             origin = None
             if 'headers' in event and 'origin' in event['headers']:
                 origin = event['headers']['origin']
-            if origin == None or origin not in allowed_origins:
+            if origin not in allowed_origins:
                 response = {
                     "statusCode": 400,
                     "headers": {
